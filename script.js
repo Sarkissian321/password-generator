@@ -39,12 +39,14 @@ function generatePassword() {
     possibleCharacters = possibleCharacters.concat(specialSymbols);
   }
 
+  
   // Generate the final password
   var finalPassword = "";
   for (var i = 0; i < numberOfCharacters; i++) {
     var rng = Math.floor(Math.random() * possibleCharacters.length);
     finalPassword += possibleCharacters[rng];
   }
+  
   return finalPassword;
 }
 
@@ -54,14 +56,7 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", function() {
   var newpassword = generatePassword();
   document.getElementById("password").placeholder = newpassword;
+
+  // Display the generated password in an alert
+  alert("Generated Password: " + newpassword);
 });
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
